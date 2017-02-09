@@ -1,30 +1,28 @@
 <div class="mycontainer text-center">
-<div class="container">
+  <div class="container">
 
-  <h1><%= @cocktail.name %></h1>
-  <p><%= link_to "Back", cocktails_path %> </p>
+    <h1><%= @cocktail.name %></h1>
+    <p><%= link_to "Back", cocktails_path %> </p>
 
 
-  <ul>
-    <% @cocktail.doses.each do |dose| %>
-    <li>
-     <%= dose.description %> - <%= dose.ingredient.name %>
-     <%= link_to "Delete", dose_path(dose), method: :delete %>
-   </li>
+    <ul>
+      <% @cocktail.doses.each do |dose| %>
+      <li>
+       <%= dose.description %> - <%= dose.ingredient.name %>
+       <%= link_to "Delete", dose_path(dose), method: :delete %>
+     </li>
+     <% end %>
+   </ul>
+
+
+
+   <%= simple_form_for [@cocktail, @dose] do |f| %>
+   <%= f.input :description %>
+   <input type="hidden" value="<%= @cocktail %>">
+   <%= f.association :ingredient, collection: Ingredient.all  %>
+   <%= f.submit "Create a dose", class: "btn btn-primary" %>
    <% end %>
- </ul>
 
 
-
- <%= simple_form_for [@cocktail, @dose] do |f| %>
- <%= f.input :description %>
- <input type="hidden" value="<%= @cocktail %>">
- <%= f.association :ingredient, collection: Ingredient.all  %>
- <%= f.submit "Create a dose", class: "btn btn-primary" %>
- <% end %>
-
-
+ </div>
 </div>
-</div>
-
-<%= <% %> %>
