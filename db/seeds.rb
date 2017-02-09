@@ -9,6 +9,9 @@
 require 'json'
 require 'open-uri'
 
+Ingredient.destroy_all
+Cocktail.destroy_all
+
 url = "http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
 ingredient_serialized = open(url).read
 repos = JSON.parse(ingredient_serialized)
@@ -18,3 +21,14 @@ repos["drinks"].each do |ingredient|
   ing = Ingredient.new(name: ingredient["strIngredient1"])
   ing.save!
 end
+
+
+Cocktail.create!(name: "Mojito" )
+Cocktail.create!(name: "Martini")
+Cocktail.create!(name: "Pina Colada" )
+Cocktail.create!(name: "Caipirinha" )
+Cocktail.create!(name: "Margarita")
+Cocktail.create!(name: "Spritz" )
+Cocktail.create!(name: "Sex on the beach")
+Cocktail.create!(name: "Sangria")
+
