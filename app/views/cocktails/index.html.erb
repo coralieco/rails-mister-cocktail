@@ -1,15 +1,14 @@
-<div class="mycontainer text-center">
-  <div class="container">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('christmas-drinks-header.jpg');">
+  <div class="banner-content">
 
-    <h1> Liste des Cocktails </h1>
+    <h1> Cocktails </h1>
+    <p>Create an amazing cocktail</p>
+    <%= link_to "CREATE NOW !", new_cocktail_path, class: "btn btn-primary btn-lg" %>
 
     <% @cocktails.each do |cocktail| %>
-    <ul>
+    <ul class="list-unstyled">
       <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
     </ul>
     <% end %>
-
-    <p><%= link_to "Create a Cocktail", new_cocktail_path %> </p>
-
   </div>
 </div>

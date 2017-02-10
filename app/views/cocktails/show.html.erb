@@ -8,8 +8,8 @@
     <ul>
       <% @cocktail.doses.each do |dose| %>
       <li>
-       <%= dose.description %> - <%= dose.ingredient.name %>
-       <%= link_to "Delete", dose_path(dose), method: :delete %>
+      <%= dose.description %> <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %>
+       <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
      </li>
      <% end %>
    </ul>
@@ -17,9 +17,9 @@
 
 
    <%= simple_form_for [@cocktail, @dose] do |f| %>
-   <%= f.input :description %>
+   <%= f.input :description, input_html: { placeholder: "5cl"} %>
    <input type="hidden" value="<%= @cocktail %>">
-   <%= f.association :ingredient, collection: Ingredient.all  %>
+   <%= f.association :ingredient, collection: Ingredient.all, prompt: "Select an ingredient" %>
    <%= f.submit "Create a dose", class: "btn btn-primary" %>
    <% end %>
 
