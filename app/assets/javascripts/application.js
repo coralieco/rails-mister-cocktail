@@ -10,7 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+// app/assets/javascripts/application.js
+
+
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/basic
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
 //= require bootstrap-sprockets
 //= require_tree .
+

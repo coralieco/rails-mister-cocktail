@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :doses, only: [:destroy]
   resources :ingredients, only: :show
 
+  mount Attachinary::Engine => "/attachinary"
+
 end

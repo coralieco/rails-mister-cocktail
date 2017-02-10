@@ -1,28 +1,40 @@
-<div class="mycontainer text-center">
+<div class="wrapper text-center">
   <div class="container">
+    <div class="row">
+      <div class="col-xs-8 col-offset-xs-2">
+        <h1><%= @cocktail.name %></h1>
+        <p><%= link_to "Back", cocktails_path %> </p>
 
-    <h1><%= @cocktail.name %></h1>
-    <p><%= link_to "Back", cocktails_path %> </p>
+        <ul>
+          <% @cocktail.doses.each do |dose| %>
+          <li>
+            <%= dose.description %> <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %>
+            <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
+          </li>
+          <% end %>
+        </ul>
 
+        <div class="formcss">
+          <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <%= f.input :description, input_html: { placeholder: "5cl" } %>
+          <input type="hidden" value="<%= @cocktail %>">
+          <%= f.association :ingredient, collection: Ingredient.all, prompt: "Select an ingredient" %>
+          <%= f.submit "Create a dose", class: "btn btn-primary" %>
+          <% end %>
 
-    <ul>
-      <% @cocktail.doses.each do |dose| %>
-      <li>
-      <%= dose.description %> <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %>
-       <%= link_to "Delete", dose_path(dose), method: :delete, data: { confirm: "Are you sure?" } %>
-     </li>
-     <% end %>
-   </ul>
+          <% if @cocktail.photo.present? %>
+          <%= cl_image_tag @cocktail.photo.path, width: 200, height: 300, crop: :fill %>
+          <% else %>
+          <%= image_tag "christmas-drinks-header", class: "avatar-show" %>
+          <% end %>
+        </div>
+      </div>
 
+    </div>
 
-
-   <%= simple_form_for [@cocktail, @dose] do |f| %>
-   <%= f.input :description, input_html: { placeholder: "5cl"} %>
-   <input type="hidden" value="<%= @cocktail %>">
-   <%= f.association :ingredient, collection: Ingredient.all, prompt: "Select an ingredient" %>
-   <%= f.submit "Create a dose", class: "btn btn-primary" %>
-   <% end %>
-
-
- </div>
+  </div>
 </div>
+
+
+
+
