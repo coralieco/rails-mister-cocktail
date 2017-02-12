@@ -7,6 +7,10 @@ class CocktailsController < ApplicationController
   def show
     @cocktail = Cocktail.find(params[:id])
     @dose = Dose.new
+
+    if @cocktail.photo.present?
+      cl_image_tag @cocktail.photo.path = @cocktail.photo
+    end
   end
 
   def create
@@ -28,3 +32,7 @@ class CocktailsController < ApplicationController
     params.require(:cocktail).permit(:name, :photo)
   end
 end
+
+
+
+

@@ -6,38 +6,42 @@
       <p>Create an amazing cocktail</p>
       <%= link_to "CREATE NOW !", new_cocktail_path, class: "btn btn-danger btn-lg" %>
       <%= link_to "Select by photo !", "#", class: "btn btn-danger btn-lg" %>
-<!--       <ul id="sb-slider" class="sb-slider">
-        ruby => @cocktails.each do |cocktail|
+
+
+
+      <div class="wrapper">
+        <ul id="sb-slider" class="sb-slider">
+          <% @cocktails.each do |cocktail| %>
           <li>
-            <a href="#" target="_blank">
-          ruby => cl_image_tag cocktail.photo.path, width: 400, height: 300, crop: fill
-            </a>
+            <p>
+              <%=  cl_image_tag cocktail.photo , width: 400, height: 300 %>
+              <%=  image_tag "christmas-drinks-header" %>
+            </p>
           </li>
-       ruby => end
-      </ul> -->
+          <% end %>
+        </ul>
+      </div>
+
     </div>
   </div>
 
 
-
-
-
-<div class="container">
-  <div class="row">
-    <% @cocktails.each do |cocktail| %>
-    <div class="col-xs-12 col-sm-2">
-      <h5 class="text-center"><%= link_to cocktail.name, cocktail_path(cocktail), class: "title-index" %></h5>
+  <div class="container">
+    <div class="row">
+      <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-2">
+        <h5 class="text-center"><%= link_to cocktail.name, cocktail_path(cocktail), class: "title-index" %></h5>
         <% if cocktail.photo.present? %>
-          <% url = cl_image_path cocktail.photo.path %>
+        <% url = cl_image_path cocktail.photo.path %>
         <% else %>
-          <% url = image_path 'christmas-drinks-header' %>
+        <% url = image_path 'christmas-drinks-header' %>
         <% end %>
-      <div class="avatar" style="background-image: url('<%= url %>')">
+        <div class="avatar" style="background-image: url('<%= url %>')">
 
+        </div>
       </div>
+      <% end %>
     </div>
-    <% end %>
-   </div>
- </div>
+  </div>
 
 </div>
