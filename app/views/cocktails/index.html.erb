@@ -15,7 +15,7 @@
           <li>
             <p>
               <%=  cl_image_tag cocktail.photo , width: 400, height: 300 %>
-              <%=  image_tag "christmas-drinks-header" %>
+              <%=  image_tag "christmas-drinks-header.jpg" %>
             </p>
           </li>
           <% end %>
@@ -34,7 +34,7 @@
         <% if cocktail.photo.present? %>
         <% url = cl_image_path cocktail.photo.path %>
         <% else %>
-        <% url = image_path 'christmas-drinks-header' %>
+        <% url = image_path 'christmas-drinks-header.jpg' %>
         <% end %>
         <div class="avatar" style="background-image: url('<%= url %>')">
 
