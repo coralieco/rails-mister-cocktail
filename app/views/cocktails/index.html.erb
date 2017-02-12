@@ -8,22 +8,42 @@
       <%= link_to "Select by photo !", "#", class: "btn btn-danger btn-lg" %>
 
 
+      <!-- SLICE BOX CODE  -->
 
       <div class="wrapper">
         <ul id="sb-slider" class="sb-slider">
           <% @cocktails.each do |cocktail| %>
-          <li>
-            <p>
-              <%=  cl_image_tag cocktail.photo , width: 400, height: 300 %>
-              <%=  image_tag "christmas-drinks-header.jpg" %>
-            </p>
-          </li>
+            <li>
+              <%= cocktail.name %>
+              <%= image_tag "christmas-drinks-header.jpg" %>
+            </li>
           <% end %>
         </ul>
-      </div>
 
-    </div>
-  </div>
+
+        <div id="shadow" class="shadow"></div>
+
+        <div id="nav-arrows" class="nav-arrows">
+          <a href="#">Next</a>
+          <a href="#">Previous</a>
+        </div>
+
+        <div id="nav-dots" class="nav-dots">
+          <span class="nav-dot-current"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div> <!-- wrapper -->
+
+      <!-- FIN DE LA SLICE BOX -->
+
+    </div> <!-- banner-content -->
+  </div> <!-- my-wrapper -->
 
 
   <div class="container">
@@ -45,3 +65,13 @@
   </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
